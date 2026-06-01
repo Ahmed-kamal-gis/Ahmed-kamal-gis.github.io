@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Kamal | GIS Specialist</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed Kamal | GIS Engineer Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -11,290 +15,352 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:'Inter', sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#f5f7fa;
-color:#222;
-line-height:1.7;
+background:#0b1220;
+color:#e5e7eb;
 }
 
-header{
-background:#0f172a;
-color:white;
-padding:60px 20px;
-text-align:center;
-}
-
-header img{
-width:180px;
-height:180px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid white;
-margin-bottom:20px;
-}
-
-header h1{
-font-size:40px;
-}
-
-header h2{
-font-size:20px;
-font-weight:normal;
-margin-top:10px;
-}
+a{color:inherit; text-decoration:none;}
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:40px 20px;
+padding:0 20px;
 }
 
-section{
-background:white;
-padding:30px;
-margin-bottom:25px;
-border-radius:15px;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+/* HERO */
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+min-height:100vh;
+gap:40px;
 }
 
-h3{
-margin-bottom:20px;
-color:#0f172a;
+.hero-left{
+flex:1;
 }
 
-.skills{
+.hero h1{
+font-size:48px;
+color:white;
+}
+
+.hero h2{
+font-size:20px;
+font-weight:500;
+margin-top:10px;
+color:#93c5fd;
+}
+
+.hero p{
+margin-top:20px;
+color:#cbd5e1;
+line-height:1.7;
+max-width:500px;
+}
+
+.hero-buttons{
+display:flex;
+gap:12px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:10px 16px;
+border-radius:10px;
+font-weight:500;
+border:1px solid transparent;
+transition:0.2s;
+}
+
+.btn-primary{
+background:#2563eb;
+}
+
+.btn-outline{
+border:1px solid #334155;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.hero-right{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+.hero-right img{
+width:320px;
+height:320px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #1e293b;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:40px;
+}
+
+.stat{
+background:#111a2e;
+padding:15px;
+border-radius:12px;
+text-align:center;
+}
+
+.stat h3{
+color:#60a5fa;
+font-size:20px;
+}
+
+.section{
+padding:80px 0;
+}
+
+.section h2{
+font-size:28px;
+margin-bottom:30px;
+color:white;
+}
+
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
-.skill-box{
-background:#f8fafc;
-padding:15px;
-border-radius:10px;
+.card{
+background:#111a2e;
+padding:20px;
+border-radius:14px;
 }
 
-ul{
-padding-left:20px;
+.card h3{
+margin-bottom:10px;
+color:#93c5fd;
+}
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.timeline-item{
+background:#111a2e;
+padding:20px;
+border-radius:12px;
+border-left:3px solid #2563eb;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.project{
+background:#111a2e;
+padding:20px;
+border-radius:14px;
+}
+
+.project h3{
+color:white;
+margin-bottom:10px;
+}
+
+.badges{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.badge{
+background:#1e293b;
+padding:6px 10px;
+border-radius:999px;
+font-size:12px;
+}
+
+.skills-bar{
+margin-top:10px;
+}
+
+.bar{
+height:8px;
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar span{
+display:block;
+height:100%;
+background:#2563eb;
+}
+
+.contact{
+text-align:center;
 }
 
 .contact a{
-display:block;
-margin-bottom:10px;
-text-decoration:none;
-color:#0f172a;
+display:inline-block;
+margin:10px;
+padding:10px 14px;
+border:1px solid #334155;
+border-radius:10px;
 }
 
 footer{
 text-align:center;
-padding:25px;
-color:#777;
+padding:40px;
+color:#64748b;
 }
 
-.cv-btn{
-display:inline-block;
-background:#2563eb;
-color:white;
-padding:12px 25px;
-border-radius:8px;
-text-decoration:none;
-margin-top:15px;
+@media(max-width:900px){
+.hero{
+flex-direction:column;
+text-align:center;
 }
-
-.cv-btn:hover{
-opacity:.9;
+.hero p{margin:auto;}
+.hero-buttons{justify-content:center;}
 }
 
 </style>
-
 </head>
+
 <body>
-
-<header>
-
-<img src="profile.jpg" alt="Ahmed Kamal">
-
-<h1>Ahmed Mohamed Kamal Lokma</h1>
-
-<h2>
-GIS Specialist | Civil 3D Drafting | Quantity Take-Off | BIM Integration
-</h2>
-
-<p style="margin-top:15px;">
-Saudi Arabia
-</p>
-
-</header>
 
 <div class="container">
 
-<section>
+<!-- HERO -->
+<section class="hero">
 
-<h3>About Me</h3>
-
+<div class="hero-left">
+<h1>Ahmed Mohamed Kamal</h1>
+<h2>GIS Specialist & Spatial Data Engineer</h2>
 <p>
-
-GIS Specialist with practical experience in spatial analysis,
-geodatabase development, infrastructure projects, Civil 3D drafting,
-quantity take-off, and BIM integration.
-
-Experienced in supporting engineering and planning teams through
-accurate mapping, spatial databases, workflow automation,
-and technical GIS solutions.
-
+Delivering GIS, Civil 3D, Quantity Take-Off and BIM-integrated solutions for infrastructure and utility projects.
 </p>
 
-</section>
-
-<section>
-
-<h3>Technical Skills</h3>
-
-<div class="skills">
-
-<div class="skill-box">
-<h4>GIS</h4>
-<ul>
-<li>ArcGIS Pro</li>
-<li>ArcGIS Online</li>
-<li>QGIS</li>
-<li>Google Earth</li>
-</ul>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#projects">View Projects</a>
+<a class="btn btn-outline" href="Ahmed-Kamal-CV.pdf" download>Download CV</a>
+<a class="btn btn-outline" href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank">LinkedIn</a>
 </div>
 
-<div class="skill-box">
-<h4>Spatial Analysis</h4>
-<ul>
-<li>Network Analysis</li>
-<li>Terrain Modeling</li>
-<li>Buffer Analysis</li>
-<li>Spatial Joins</li>
-</ul>
+<div class="stats">
+<div class="stat"><h3>3+</h3><p>Years Experience</p></div>
+<div class="stat"><h3>4+</h3><p>Major Projects</p></div>
+<div class="stat"><h3>GIS + BIM</h3><p>Integration</p></div>
+<div class="stat"><h3>Python</h3><p>Automation</p></div>
+</div>
 </div>
 
-<div class="skill-box">
-<h4>Engineering</h4>
-<ul>
-<li>Civil 3D</li>
-<li>Quantity Take-Off</li>
-<li>Infrastructure Drawings</li>
-<li>Shop Drawings</li>
-</ul>
-</div>
-
-<div class="skill-box">
-<h4>Programming</h4>
-<ul>
-<li>Python</li>
-<li>ArcPy</li>
-<li>SQL</li>
-<li>Automation Workflows</li>
-</ul>
-</div>
-
+<div class="hero-right">
+<img src="profile.jpeg" alt="Ahmed Kamal" />
 </div>
 
 </section>
 
-<section>
-
-<h3>Professional Experience</h3>
-
-<ul>
-
-<li>
-<b>GIS Specialist - Civil 3D Drafting</b><br>
-Emkan Holding – Saad Ali Alessa Group
-</li>
-
-<br>
-
-<li>
-<b>GIS Specialist</b><br>
-Bazar Al Khaleej – Riyadh
-</li>
-
-<br>
-
-<li>
-<b>GIS Analyst (Healthcare)</b><br>
-Ahl Masr Hospital Foundation
-</li>
-
-<br>
-
-<li>
-<b>Data Analyst</b><br>
-Power Pharma
-</li>
-
-</ul>
-
-</section>
-
-<section>
-
-<h3>Featured Projects</h3>
-
-<ul>
-
-<li>Asbestos Water Lines Replacement Project – Al Khobar</li>
-
-<li>Stormwater Network Project – Riviera Jeddah</li>
-
-<li>Al-Zaydi Residential District Development</li>
-
-<li>Al-Arbaeen Street Expansion – Makkah</li>
-
-</ul>
-
-<p style="margin-top:15px;">
-Detailed project portfolio will be added soon.
-</p>
-
-</section>
-
-<section>
-
-<h3>Certifications</h3>
-
-<ul>
-<li>ICDL</li>
-<li>Introduction to GIS Mapping - University of Toronto</li>
-</ul>
-
-</section>
-
-<section class="contact">
-
-<h3>Contact</h3>
-
-<a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank">
-LinkedIn Profile
-</a>
-
-<a href="mailto:a7med.kammal@icloud.com">
-a7med.kammal@icloud.com
-</a>
-
-<a href="tel:+966544027271">
-+966 54 402 7271
-</a>
-
-<a class="cv-btn" href="#">
-Download CV
-</a>
-
-</section>
-
+<!-- SERVICES -->
+<section class="section">
+<h2>What I Do</h2>
+<div class="cards">
+<div class="card"><h3>🗺 GIS Analysis</h3></div>
+<div class="card"><h3>🏗 Civil 3D Drafting</h3></div>
+<div class="card"><h3>📊 Quantity Take-Off</h3></div>
+<div class="card"><h3>🔗 BIM Integration</h3></div>
 </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section">
+<h2>Experience</h2>
+<div class="timeline">
+<div class="timeline-item"><b>2024 - Present</b><br>Emkan Holding - GIS & Civil 3D Specialist</div>
+<div class="timeline-item"><b>2023 - 2024</b><br>Bazar Al Khaleej - GIS Specialist</div>
+<div class="timeline-item"><b>2023 - 2024</b><br>Ahl Masr Hospital - GIS Analyst</div>
+<div class="timeline-item"><b>2021 - 2023</b><br>Power Pharma - Data Analyst</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+<h2>Featured Projects</h2>
+<div class="projects">
+<div class="project">
+<h3>Al Khobar Water Network</h3>
+<div class="badges">
+<span class="badge">Geodatabase</span>
+<span class="badge">Civil 3D</span>
+<span class="badge">Reports</span>
+</div>
+</div>
+
+<div class="project">
+<h3>Riviera Jeddah Stormwater</h3>
+<div class="badges">
+<span class="badge">Spatial Analysis</span>
+<span class="badge">Mapping</span>
+</div>
+</div>
+
+<div class="project">
+<h3>Makkah Road Expansion</h3>
+<div class="badges">
+<span class="badge">Infrastructure</span>
+<span class="badge">GIS Support</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+<h2>Technical Skills</h2>
+
+<div class="card">
+<p>ArcGIS Pro</p>
+<div class="bar"><span style="width:90%"></span></div>
+
+<p>QGIS</p>
+<div class="bar"><span style="width:85%"></span></div>
+
+<p>Civil 3D</p>
+<div class="bar"><span style="width:80%"></span></div>
+
+<p>Python / ArcPy</p>
+<div class="bar"><span style="width:75%"></span></div>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="section contact">
+<h2>Contact</h2>
+<a href="mailto:a7med.kammal@icloud.com">Email</a>
+<a href="tel:+966544027271">Phone</a>
+<a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank">LinkedIn</a>
+</section>
 
 <footer>
-© Ahmed Kamal Portfolio
+© 2026 Ahmed Kamal | GIS Engineer Portfolio
 </footer>
+
+</div>
 
 </body>
 </html>
