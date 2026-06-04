@@ -1,366 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ahmed Kamal | GIS Engineer Portfolio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter', sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#0b1220;
-color:#e5e7eb;
-}
-
-a{color:inherit; text-decoration:none;}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:0 20px;
-}
-
-/* HERO */
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-min-height:100vh;
-gap:40px;
-}
-
-.hero-left{
-flex:1;
-}
-
-.hero h1{
-font-size:48px;
-color:white;
-}
-
-.hero h2{
-font-size:20px;
-font-weight:500;
-margin-top:10px;
-color:#93c5fd;
-}
-
-.hero p{
-margin-top:20px;
-color:#cbd5e1;
-line-height:1.7;
-max-width:500px;
-}
-
-.hero-buttons{
-display:flex;
-gap:12px;
-margin-top:25px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:10px 16px;
-border-radius:10px;
-font-weight:500;
-border:1px solid transparent;
-transition:0.2s;
-}
-
-.btn-primary{
-background:#2563eb;
-}
-
-.btn-outline{
-border:1px solid #334155;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.hero-right{
-flex:1;
-display:flex;
-justify-content:center;
-}
-
-.hero-right img{
-width:320px;
-height:320px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #1e293b;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-margin-top:40px;
-}
-
-.stat{
-background:#111a2e;
-padding:15px;
-border-radius:12px;
-text-align:center;
-}
-
-.stat h3{
-color:#60a5fa;
-font-size:20px;
-}
-
-.section{
-padding:80px 0;
-}
-
-.section h2{
-font-size:28px;
-margin-bottom:30px;
-color:white;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-background:#111a2e;
-padding:20px;
-border-radius:14px;
-}
-
-.card h3{
-margin-bottom:10px;
-color:#93c5fd;
-}
-
-.timeline{
-display:flex;
-flex-direction:column;
-gap:20px;
-}
-
-.timeline-item{
-background:#111a2e;
-padding:20px;
-border-radius:12px;
-border-left:3px solid #2563eb;
-}
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.project{
-background:#111a2e;
-padding:20px;
-border-radius:14px;
-}
-
-.project h3{
-color:white;
-margin-bottom:10px;
-}
-
-.badges{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-}
-
-.badge{
-background:#1e293b;
-padding:6px 10px;
-border-radius:999px;
-font-size:12px;
-}
-
-.skills-bar{
-margin-top:10px;
-}
-
-.bar{
-height:8px;
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-}
-
-.bar span{
-display:block;
-height:100%;
-background:#2563eb;
-}
-
-.contact{
-text-align:center;
-}
-
-.contact a{
-display:inline-block;
-margin:10px;
-padding:10px 14px;
-border:1px solid #334155;
-border-radius:10px;
-}
-
-footer{
-text-align:center;
-padding:40px;
-color:#64748b;
-}
-
-@media(max-width:900px){
-.hero{
-flex-direction:column;
-text-align:center;
-}
-.hero p{margin:auto;}
-.hero-buttons{justify-content:center;}
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-left">
-<h1>Ahmed Mohamed Kamal</h1>
-<h2>GIS Specialist & Spatial Data Engineer</h2>
-<p>
-Delivering GIS, Civil 3D, Quantity Take-Off and BIM-integrated solutions for infrastructure and utility projects.
-</p>
-
-<div class="hero-buttons">
-<a class="btn btn-primary" href="#projects">View Projects</a>
-<a class="btn btn-outline" href="Ahmed-Kamal-CV.pdf" download>Download CV</a>
-<a class="btn btn-outline" href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank">LinkedIn</a>
-</div>
-
-<div class="stats">
-<div class="stat"><h3>3+</h3><p>Years Experience</p></div>
-<div class="stat"><h3>4+</h3><p>Major Projects</p></div>
-<div class="stat"><h3>GIS + BIM</h3><p>Integration</p></div>
-<div class="stat"><h3>Python</h3><p>Automation</p></div>
-</div>
-</div>
-
-<div class="hero-right">
-<img src="profile.jpeg" alt="Ahmed Kamal" />
-</div>
-
-</section>
-
-<!-- SERVICES -->
-<section class="section">
-<h2>What I Do</h2>
-<div class="cards">
-<div class="card"><h3>🗺 GIS Analysis</h3></div>
-<div class="card"><h3>🏗 Civil 3D Drafting</h3></div>
-<div class="card"><h3>📊 Quantity Take-Off</h3></div>
-<div class="card"><h3>🔗 BIM Integration</h3></div>
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section">
-<h2>Experience</h2>
-<div class="timeline">
-<div class="timeline-item"><b>2024 - Present</b><br>Emkan Holding - GIS & Civil 3D Specialist</div>
-<div class="timeline-item"><b>2023 - 2024</b><br>Bazar Al Khaleej - GIS Specialist</div>
-<div class="timeline-item"><b>2023 - 2024</b><br>Ahl Masr Hospital - GIS Analyst</div>
-<div class="timeline-item"><b>2021 - 2023</b><br>Power Pharma - Data Analyst</div>
-</div>
-</section>
-
 <!-- PROJECTS -->
 <section class="section" id="projects">
+
 <h2>Featured Projects</h2>
+
 <div class="projects">
+
 <div class="project">
-<h3>Al Khobar Water Network</h3>
+<img src="asbestos-water-line/asbestos-1..jpeg" alt="Asbestos Water Line Replacement">
+<div class="project-content">
+<h3>Asbestos Water Line Replacement Project</h3>
+<p>
+Replacement of aging asbestos water pipelines with new potable water distribution networks. Responsibilities included GIS data preparation, As-Built drawings, quantity take-off reports, topology validation, and compliance with National Water Company standards.
+</p>
 <div class="badges">
+<span class="badge">GIS</span>
+<span class="badge">AutoCAD</span>
+<span class="badge">Quantity Take-Off</span>
+<span class="badge">NWC</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<img src="bore-hole-replacement/bore-hole-replacement-1.jpeg" alt="Borehole Documentation">
+<div class="project-content">
+<h3>Borehole Documentation Project</h3>
+<p>
+GIS documentation and management of exploratory borehole investigation data, including geotechnical records organization, quality control, and database preparation according to NWC standards.
+</p>
+<div class="badges">
+<span class="badge">GIS</span>
 <span class="badge">Geodatabase</span>
-<span class="badge">Civil 3D</span>
-<span class="badge">Reports</span>
+<span class="badge">QA/QC</span>
+</div>
 </div>
 </div>
 
 <div class="project">
-<h3>Riviera Jeddah Stormwater</h3>
+<img src="palm-hills-urban-planning/palm-hills-1.jpeg" alt="Palm Hills Urban Planning">
+<div class="project-content">
+<h3>Palm Hills Urban Planning Study</h3>
+<p>
+Healthcare accessibility and emergency response analysis using GIS network modeling techniques to evaluate hospital coverage and ambulance travel times.
+</p>
 <div class="badges">
-<span class="badge">Spatial Analysis</span>
-<span class="badge">Mapping</span>
+<span class="badge">Network Analyst</span>
+<span class="badge">Urban Planning</span>
+<span class="badge">Accessibility</span>
+</div>
 </div>
 </div>
 
 <div class="project">
-<h3>Makkah Road Expansion</h3>
+<img src="pipe-network-tools/code-1.jpeg" alt="NWC GIS Automation Tool">
+<div class="project-content">
+<h3>NWC GIS Automation Tool</h3>
+<p>
+Custom Python and ArcPy automation tool developed to streamline GIS asset classification and schema preparation workflows for infrastructure projects.
+</p>
 <div class="badges">
-<span class="badge">Infrastructure</span>
-<span class="badge">GIS Support</span>
+<span class="badge">Python</span>
+<span class="badge">ArcPy</span>
+<span class="badge">Automation</span>
 </div>
 </div>
 </div>
+
+<div class="project">
+<img src="spatial-analysis-saudi-arabia/spatial-analysis-1.jpeg" alt="Spatial Analysis Saudi Arabia">
+<div class="project-content">
+<h3>Spatial Analysis Studies</h3>
+<p>
+Spatial analysis projects across Saudi Arabia including slope analysis, flow direction modeling, runoff assessment, and agricultural land suitability evaluation.
+</p>
+<div class="badges">
+<span class="badge">Spatial Analyst</span>
+<span class="badge">DEM</span>
+<span class="badge">GIS</span>
+</div>
+</div>
+</div>
+
+<div class="project">
+<img src="tilal-elnarges-house-project/water-meter-1.jpeg" alt="Water Meter GIS Documentation">
+<div class="project-content">
+<h3>Water Meter GIS Documentation</h3>
+<p>
+Development of a GIS asset database for documenting water meter locations and associated information according to National Water Company standards and schema requirements.
+</p>
+<div class="badges">
+<span class="badge">Asset Management</span>
+<span class="badge">GIS</span>
+<span class="badge">NWC Schema</span>
+</div>
+</div>
+</div>
+
+</div>
+
 </section>
-
-<!-- SKILLS -->
-<section class="section">
-<h2>Technical Skills</h2>
-
-<div class="card">
-<p>ArcGIS Pro</p>
-<div class="bar"><span style="width:90%"></span></div>
-
-<p>QGIS</p>
-<div class="bar"><span style="width:85%"></span></div>
-
-<p>Civil 3D</p>
-<div class="bar"><span style="width:80%"></span></div>
-
-<p>Python / ArcPy</p>
-<div class="bar"><span style="width:75%"></span></div>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="section contact">
-<h2>Contact</h2>
-<a href="mailto:a7med.kammal@icloud.com">Email</a>
-<a href="tel:+966544027271">Phone</a>
-<a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank">LinkedIn</a>
-</section>
-
-<footer>
-© 2026 Ahmed Kamal | GIS Engineer Portfolio
-</footer>
-
-</div>
-
-</body>
-</html>
