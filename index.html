@@ -3,610 +3,598 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ahmed Kamal | GIS Engineer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0b0f1a;
-      --surface: #111827;
-      --surface2: #151e2d;
-      --border: #1f2d3d;
-      --accent: #38bdf8;
-      --accent2: #0ea5e9;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --tag-bg: #0c2233;
-      --tag-color: #38bdf8;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 2.5rem;
-      background: rgba(11,15,26,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1rem;
-      color: var(--accent); letter-spacing: 0.05em;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.85rem; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 8rem 2.5rem 4rem;
-      max-width: 1100px; margin: 0 auto;
-      gap: 4rem;
-    }
-    .hero-text { flex: 1; }
-    .hero-eyebrow {
-      font-size: 0.75rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 1.25rem; display: block;
-    }
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800; line-height: 1.1;
-      color: #fff; margin-bottom: 0.5rem;
-    }
-    .hero-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      font-weight: 600; color: var(--accent);
-      margin-bottom: 1.5rem; letter-spacing: 0.03em;
-    }
-    .hero-desc {
-      font-size: 1rem; color: var(--muted);
-      max-width: 520px; margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .btn-primary {
-      background: var(--accent); color: #0b0f1a;
-      border: none; border-radius: 8px;
-      padding: 0.8rem 1.75rem;
-      font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: 0.88rem; letter-spacing: 0.04em;
-      text-decoration: none; transition: opacity 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.88; }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.8rem 1.75rem;
-      font-size: 0.88rem; text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-    .hero-img {
-      width: 220px; height: 220px; flex-shrink: 0;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      object-fit: cover;
-      filter: grayscale(20%);
-    }
-
-    /* STATS */
-    .stats {
-      display: flex; flex-wrap: wrap; gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      max-width: 1100px; margin: 0 auto;
-    }
-    .stat-item {
-      flex: 1; min-width: 160px;
-      padding: 2rem 2.5rem;
-      border-right: 1px solid var(--border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-number {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem; font-weight: 800;
-      color: var(--accent); display: block;
-    }
-    .stat-label { font-size: 0.82rem; color: var(--muted); }
-
-    /* SECTION */
-    .section { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
-    .section-header { margin-bottom: 3rem; }
-    .section-label {
-      font-size: 0.7rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.5rem; display: block;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.75rem; font-weight: 800;
-      color: #fff;
-    }
-
-    /* WHAT I DO */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .service-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-    .service-card:hover { border-color: var(--accent); }
-    .service-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
-    .service-card h3 {
-      font-family: 'Syne', sans-serif; font-size: 0.9rem;
-      font-weight: 700; color: #fff; margin-bottom: 0.4rem;
-    }
-    .service-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
-
-    /* EXPERIENCE */
-    .timeline { display: flex; flex-direction: column; gap: 0; }
-    .timeline-item {
-      display: flex; gap: 2rem; align-items: flex-start;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .timeline-item:first-child { border-top: 1px solid var(--border); }
-    .timeline-date {
-      font-size: 0.78rem; color: var(--muted);
-      white-space: nowrap; padding-top: 0.15rem;
-      min-width: 110px;
-    }
-    .timeline-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-      margin-top: 0.45rem;
-    }
-    .timeline-content h3 {
-      font-family: 'Syne', sans-serif; font-size: 0.95rem;
-      font-weight: 700; color: #fff; margin-bottom: 0.2rem;
-    }
-    .timeline-content p { font-size: 0.85rem; color: var(--muted); }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.25rem;
-    }
-    .project-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      text-decoration: none; color: inherit;
-      transition: transform 0.25s, border-color 0.25s;
-      display: flex; flex-direction: column;
-    }
-    .project-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-    .project-card:hover .project-arrow { transform: translate(3px, -3px); }
-    .project-img {
-      width: 100%; aspect-ratio: 16/9;
-      object-fit: cover; display: block;
-      border-bottom: 1px solid var(--border);
-    }
-    .project-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-    .project-cat {
-      font-size: 0.7rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.5rem; display: block;
-    }
-    .project-body h3 {
-      font-family: 'Syne', sans-serif; font-size: 1rem;
-      font-weight: 700; color: #fff;
-      margin-bottom: 0.6rem; line-height: 1.3;
-    }
-    .project-body p {
-      font-size: 0.85rem; color: var(--muted);
-      line-height: 1.65; flex: 1;
-    }
-    .project-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-top: 1.25rem; padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .project-tag {
-      background: var(--tag-bg); color: var(--tag-color);
-      border: 1px solid rgba(56,189,248,0.15);
-      border-radius: 4px; padding: 0.2rem 0.6rem;
-      font-size: 0.72rem; font-weight: 500;
-    }
-    .project-arrow {
-      color: var(--accent); font-size: 1rem;
-      transition: transform 0.2s; flex-shrink: 0;
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.75rem;
-    }
-    .skill-item {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.9rem 1.1rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .skill-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-    }
-    .skill-name { font-size: 0.88rem; color: var(--text); font-weight: 400; }
-
-    /* CONTACT */
-    .contact-section {
-      background: var(--surface2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .contact-inner {
-      max-width: 1100px; margin: 0 auto;
-      padding: 5rem 2.5rem;
-      display: flex; align-items: flex-start;
-      justify-content: space-between; flex-wrap: wrap; gap: 3rem;
-    }
-    .contact-text { max-width: 480px; }
-    .contact-text h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem; font-weight: 800; color: #fff;
-      margin-bottom: 1rem;
-    }
-    .contact-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .contact-link {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.9rem; color: var(--text);
-      text-decoration: none;
-      padding: 0.9rem 1.25rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; transition: border-color 0.2s, color 0.2s;
-      min-width: 260px;
-    }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-    .contact-link-icon { font-size: 1rem; }
-
-    footer {
-      max-width: 1100px; margin: 0 auto;
-      padding: 2rem 2.5rem;
-      display: flex; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    footer p { font-size: 0.8rem; color: var(--muted); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-text { animation: fadeUp 0.6s ease both; }
-    .hero-img { animation: fadeUp 0.6s ease 0.15s both; }
-    .stats { animation: fadeUp 0.5s ease 0.2s both; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { flex-direction: column-reverse; align-items: flex-start; gap: 2rem; padding: 6rem 1.5rem 3rem; }
-      .hero-img { width: 120px; height: 120px; }
-      .stat-item { padding: 1.5rem; }
-      .section { padding: 3.5rem 1.5rem; }
-      .contact-inner { padding: 3rem 1.5rem; }
-    }
-  </style>
+  <meta name="description" content="Ahmed Kamal — GIS Engineer specializing in Utility Mapping, Spatial Analysis, Civil 3D & BIM Integration. Based in Eastern Province, Saudi Arabia." />
+  <meta name="keywords" content="GIS Engineer, ArcGIS, QGIS, Civil 3D, BIM, Spatial Analysis, Utility Mapping, Saudi Arabia" />
+  <title>Ahmed Kamal | GIS Engineer & Spatial Data Specialist</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">AK · GIS</span>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- ── ANIMATED CANVAS BACKGROUND ── -->
+<canvas id="bg-canvas"></canvas>
 
-  <!-- HERO -->
-  <section class="hero" id="about">
-    <div class="hero-text">
-      <span class="hero-eyebrow">GIS Specialist · Eastern Province, Saudi Arabia</span>
-      <h1>Ahmed Mohamed<br/>Kamal</h1>
-      <p class="hero-title">GIS Specialist &amp; Spatial Data Engineer</p>
-      <p class="hero-desc">
-        I work at the intersection of GIS, Civil 3D, and BIM — transforming complex field data into clean, accurate spatial datasets for infrastructure and utility projects. My focus is on data quality, NWC compliance, and automation that makes projects move faster.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="Ahmed-Kamal-CV.pdf" class="btn-secondary" target="_blank">Download CV</a>
-        <a href="https://www.linkedin.com/in/ahmed-lokma/" class="btn-secondary" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-    <img src="profile.jpeg" alt="Ahmed Kamal" class="hero-img" />
-  </section>
+<!-- ══════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Ahmed Kamal
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-mobile-btn" id="mobile-nav-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat-item">
-      <span class="stat-number">3+</span>
-      <span class="stat-label">Years of Experience</span>
+<!-- ══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Available for Projects &amp; Opportunities
     </div>
-    <div class="stat-item">
-      <span class="stat-number">6</span>
-      <span class="stat-label">Featured Projects</span>
+
+    <h1>
+      Ahmed<br/>
+      <span class="hero-name-accent">Kamal</span>
+    </h1>
+
+    <p class="hero-role">
+      <span>GIS Engineer</span> · Utility Mapping · Civil 3D · BIM Integration
+    </p>
+
+    <p class="hero-desc">
+      Transforming raw geospatial data into precision-engineered infrastructure solutions — from NWC-compliant GIS datasets to automated Python workflows and spatial analysis studies across Saudi Arabia.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l6 6 6-6"/></svg>
+        View Projects
+      </a>
+      <a href="Ahmed-Kamal-CV.pdf" target="_blank" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v8m-4-4l4 4 4-4M2 14h12"/></svg>
+        Download CV
+      </a>
     </div>
-    <div class="stat-item">
-      <span class="stat-number">GIS + BIM</span>
-      <span class="stat-label">Integration Specialist</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">Python</span>
-      <span class="stat-label">Automation Development</span>
+
+    <div class="hero-socials">
+      <span class="hero-socials-label">Find me on</span>
+      <a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank" class="social-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/ahmed-kamal-gis" target="_blank" class="social-link" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="mailto:a7med.kammal@icloud.com" class="social-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      <a href="https://wa.me/966544027271" target="_blank" class="social-link" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.406A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      </a>
     </div>
   </div>
 
-  <!-- WHAT I DO -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-label">Expertise</span>
-      <h2 class="section-title">What I Do</h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="service-icon">🗺️</span>
-        <h3>GIS Analysis</h3>
-        <p>Spatial modeling, network analysis, terrain studies, and infrastructure mapping</p>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">🏗️</span>
-        <h3>Civil 3D Drafting</h3>
-        <p>As-Built drawings and survey-based CAD documentation for utility networks</p>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">📊</span>
-        <h3>Quantity Take-Off</h3>
-        <p>Accurate material and asset quantification for infrastructure projects</p>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">🔗</span>
-        <h3>BIM Integration</h3>
-        <p>Connecting GIS spatial data with BIM workflows for smarter infrastructure management</p>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">🗄️</span>
-        <h3>GIS Database Management</h3>
-        <p>Geodatabase design, NWC schema compliance, and data quality control</p>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">⚙️</span>
-        <h3>Python Automation</h3>
-        <p>Custom ArcPy tools to automate GIS workflows and eliminate repetitive manual tasks</p>
-      </div>
-    </div>
-  </section>
+  <div class="hero-right">
+    <div class="hero-profile-wrap">
+      <div class="hero-profile-bg"></div>
+      <img src="profile.jpeg" alt="Ahmed Kamal" class="hero-profile-img" />
 
-  <!-- EXPERIENCE -->
-  <section class="section" style="padding-top:0;">
-    <div class="section-header">
-      <span class="section-label">Career</span>
-      <h2 class="section-title">Experience</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-date">2024 – Present</span>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Emkan Holding</h3>
-          <p>GIS &amp; Civil 3D Specialist — Eastern Province, Saudi Arabia</p>
+      <div class="hero-float-card card-1">
+        <span class="float-icon">🗺️</span>
+        <div>
+          <span class="float-title">ArcGIS Pro</span>
+          <span class="float-sub">GIS Platform</span>
         </div>
       </div>
-      <div class="timeline-item">
-        <span class="timeline-date">2023 – 2024</span>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Bazar Al Khaleej</h3>
-          <p>GIS Specialist</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-date">2023 – 2024</span>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Ahl Masr Hospital</h3>
-          <p>GIS Analyst</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-date">2021 – 2023</span>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Power Pharma</h3>
-          <p>Data Analyst</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section class="section" id="projects" style="padding-top:0;">
-    <div class="section-header">
-      <span class="section-label">Work</span>
-      <h2 class="section-title">Featured Projects</h2>
-    </div>
-    <div class="projects-grid">
-
-      <a href="asbestos-water-line/index.html" class="project-card">
-        <img src="asbestos-water-line/asbestos-1.jpeg" alt="Asbestos Water Line" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Infrastructure · GIS Documentation</span>
-          <h3>Asbestos Water Line Replacement</h3>
-          <p>GIS documentation and As-Built drawings for new potable water networks replacing aging asbestos pipelines across Al Thuqbah and Al Khobar — fully compliant with NWC standards.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">GIS</span>
-              <span class="project-tag">AutoCAD</span>
-              <span class="project-tag">NWC</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
+      <div class="hero-float-card card-2">
+        <span class="float-icon">⚙️</span>
+        <div>
+          <span class="float-title">Python + ArcPy</span>
+          <span class="float-sub">Automation</span>
         </div>
+      </div>
+
+      <div class="hero-float-card card-3">
+        <span class="float-icon">🏗️</span>
+        <div>
+          <span class="float-title">Civil 3D + BIM</span>
+          <span class="float-sub">Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STATS
+════════════════════════════════════════ -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-number" data-target="3" data-suffix="+">3+</span>
+      <span class="stat-label">Years of Experience</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-number" data-target="20" data-suffix="+">20+</span>
+      <span class="stat-label">Projects Delivered</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-number">GIS</span>
+      <span class="stat-label">Utility Networks & Mapping</span>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-number">BIM</span>
+      <span class="stat-label">Civil 3D Integration</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-header">
+        <span class="section-tag">// About Me</span>
+        <h2 class="section-title">Engineering Precision<br/>Through Spatial Data</h2>
+      </div>
+      <div class="about-text reveal">
+        <p>
+          I'm a <strong>GIS Engineer</strong> based in the Eastern Province of Saudi Arabia, with over 3 years of hands-on experience delivering geospatial solutions for utility infrastructure, urban planning, and environmental analysis.
+        </p>
+        <p>
+          My work centers on transforming complex field data — from survey measurements to geotechnical records — into <strong>clean, validated, submission-ready GIS datasets</strong> that meet the exact standards of clients like the National Water Company.
+        </p>
+        <p>
+          Beyond data processing, I develop <strong>custom Python and ArcPy tools</strong> that automate repetitive workflows, and I bridge the gap between GIS and BIM to support modern infrastructure project delivery.
+        </p>
+      </div>
+    </div>
+    <div class="about-highlights reveal reveal-delay-1">
+      <div class="about-highlight">
+        <span class="ah-icon">🗺️</span>
+        <div>
+          <div class="ah-title">GIS & Spatial Analysis</div>
+          <div class="ah-desc">ArcGIS Pro, QGIS, Network Analyst, Spatial Analyst — full project lifecycle from raw data to published maps</div>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <span class="ah-icon">🏗️</span>
+        <div>
+          <div class="ah-title">Civil 3D & As-Built Documentation</div>
+          <div class="ah-desc">Producing As-Built CAD drawings from survey data and documenting utility infrastructure for NWC submission</div>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <span class="ah-icon">⚙️</span>
+        <div>
+          <div class="ah-title">Python GIS Automation</div>
+          <div class="ah-desc">Custom ArcPy tools that automate data classification, schema formatting, and quality control workflows</div>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <span class="ah-icon">🔗</span>
+        <div>
+          <div class="ah-title">BIM Integration</div>
+          <div class="ah-desc">Connecting spatial GIS data with BIM workflows for smarter, data-driven infrastructure asset management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SKILLS
+════════════════════════════════════════ -->
+<section class="section" id="skills" style="padding-top:0;">
+  <div class="section-header reveal">
+    <span class="section-tag">// Technical Stack</span>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-sub">The platforms, languages, and methodologies I use to deliver GIS engineering solutions.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <span class="skill-icon">🗺️</span>
+      <span class="skill-name">ArcGIS Pro</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <span class="skill-icon">🌍</span>
+      <span class="skill-name">ArcMap</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <span class="skill-icon">🔌</span>
+      <span class="skill-name">ArcFM</span>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <span class="skill-icon">🟢</span>
+      <span class="skill-name">QGIS</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🏗️</span>
+      <span class="skill-name">Civil 3D</span>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <span class="skill-icon">📐</span>
+      <span class="skill-name">AutoCAD</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <span class="skill-icon">🔗</span>
+      <span class="skill-name">BIM</span>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <span class="skill-icon">🐍</span>
+      <span class="skill-name">Python / ArcPy</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🗄️</span>
+      <span class="skill-name">SQL Server</span>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <span class="skill-icon">📊</span>
+      <span class="skill-name">Power BI</span>
+      <span class="skill-level">Intermediate</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <span class="skill-icon">🌐</span>
+      <span class="skill-name">Spatial Analyst</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <span class="skill-icon">🔧</span>
+      <span class="skill-name">Utility Mapping</span>
+      <span class="skill-level">Advanced</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════ -->
+<section class="section" id="projects" style="padding-top:0;">
+  <div class="section-header reveal">
+    <span class="section-tag">// Featured Work</span>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Real-world GIS engineering projects — from infrastructure documentation to spatial analysis and Python automation.</p>
+  </div>
+  <div class="projects-grid">
+
+    <!-- 1. Asbestos Water Line -->
+    <a href="asbestos-water-line/index.html" class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="asbestos-water-line/asbestos-1.jpeg" alt="Asbestos Water Line Replacement" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">🗺️</div>
+        <span class="project-cat-badge">Infrastructure</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Asbestos Water Line Replacement</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">GIS documentation and AutoCAD As-Built drawings for new water distribution networks replacing aging asbestos pipelines across Al Thuqbah and Al Khobar — diameters from Ø110mm to Ø600mm, fully NWC-compliant.</p>
+        <div class="project-tags">
+          <span class="project-tag">ArcGIS Pro</span>
+          <span class="project-tag">AutoCAD</span>
+          <span class="project-tag">NWC</span>
+          <span class="project-tag">Topology</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 2. Borehole -->
+    <a href="bore-hole-replacement/index.html" class="project-card reveal reveal-delay-1">
+      <div class="project-img-wrap">
+        <img src="bore-hole-replacement/bore-hole-replacement-1.jpeg" alt="Borehole Documentation" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">🔩</div>
+        <span class="project-cat-badge">Geotechnical</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Borehole Investigation Documentation</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Structured GIS spatial database for geotechnical borehole investigation records — organized, quality-controlled, and validated against National Water Company data standards.</p>
+        <div class="project-tags">
+          <span class="project-tag">ArcGIS Pro</span>
+          <span class="project-tag">Geodatabase</span>
+          <span class="project-tag">QC</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 3. Palm Hills -->
+    <a href="palm-hills-urban-planning/index.html" class="project-card reveal reveal-delay-2">
+      <div class="project-img-wrap">
+        <img src="palm-hills-urban-planning/palm-hills-1.jpeg" alt="Palm Hills Urban Planning" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">🏙️</div>
+        <span class="project-cat-badge">Urban Planning</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Palm Hills Urban Planning Study</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Network-based GIS analysis evaluating hospital service coverage and ambulance response times for a residential compound in 6th of October City — identifying accessibility gaps for planners.</p>
+        <div class="project-tags">
+          <span class="project-tag">Network Analyst</span>
+          <span class="project-tag">Urban Planning</span>
+          <span class="project-tag">Healthcare</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 4. Pipe Network Tool -->
+    <a href="pipe-network-tools/index.html" class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="pipe-network-tools/code-1.jpeg" alt="Pipe Network Automation Tool" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">🐍</div>
+        <span class="project-cat-badge">Python Tool</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Pipe Network Automation Tool</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Custom Python and ArcPy automation tool that classifies and formats infrastructure GIS data to NWC schema — eliminating hours of repetitive manual data preparation per project.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">ArcPy</span>
+          <span class="project-tag">Automation</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 5. Spatial Analysis -->
+    <a href="spatial-analysis-saudi-arabia/index.html" class="project-card reveal reveal-delay-1">
+      <div class="project-img-wrap">
+        <img src="spatial-analysis-saudi-arabia/spatial-analysis-1.jpeg" alt="Spatial Analysis Saudi Arabia" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">🌏</div>
+        <span class="project-cat-badge">Spatial Analysis</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Spatial Analysis — Saudi Arabia</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Series of GIS spatial studies across Saudi Arabia — terrain and slope modeling, flood flow direction, agricultural land suitability evaluation, and site selection using DEM data.</p>
+        <div class="project-tags">
+          <span class="project-tag">Spatial Analyst</span>
+          <span class="project-tag">DEM</span>
+          <span class="project-tag">Hydrology</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 6. Water Meter -->
+    <a href="tilal-elnarges-house-project/index.html" class="project-card reveal reveal-delay-2">
+      <div class="project-img-wrap">
+        <img src="tilal-elnarges-house-project/water-meter-1.jpeg" alt="Water Meter Documentation" class="project-img" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="project-img-placeholder" style="display:none">💧</div>
+        <span class="project-cat-badge">Asset Documentation</span>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title">Water Meter GIS Documentation</h3>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Complete GIS asset inventory of water meter locations for Tilal El-Narges — spatially accurate, attribute-complete, and formatted for official NWC submission and long-term asset management.</p>
+        <div class="project-tags">
+          <span class="project-tag">ArcGIS Pro</span>
+          <span class="project-tag">Asset Mgmt</span>
+          <span class="project-tag">NWC</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EXPERIENCE
+════════════════════════════════════════ -->
+<section class="section" id="experience" style="padding-top:0;">
+  <div class="section-header reveal">
+    <span class="section-tag">// Career</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <span class="timeline-date">2024 — Present</span>
+      <div class="timeline-company">Emkan Holding</div>
+      <div class="timeline-role">GIS & Civil 3D Specialist · Eastern Province, Saudi Arabia</div>
+      <ul class="timeline-points">
+        <li>Delivering GIS documentation for NWC utility infrastructure projects across the Eastern Region</li>
+        <li>Producing AutoCAD As-Built drawings from field survey data</li>
+        <li>Developing Python/ArcPy automation tools for NWC data schema compliance</li>
+        <li>Managing geodatabases and performing topology and data quality validation</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <span class="timeline-date">2023 — 2024</span>
+      <div class="timeline-company">Bazar Al Khaleej</div>
+      <div class="timeline-role">GIS Specialist</div>
+      <ul class="timeline-points">
+        <li>Prepared and maintained spatial datasets for commercial and infrastructure projects</li>
+        <li>Conducted GIS analysis and mapping to support planning and decision-making</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <span class="timeline-date">2023 — 2024</span>
+      <div class="timeline-company">Ahl Masr Hospital</div>
+      <div class="timeline-role">GIS Analyst</div>
+      <ul class="timeline-points">
+        <li>Applied network analysis to evaluate hospital catchment areas and service coverage</li>
+        <li>Produced spatial reports supporting facility planning and operations</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <span class="timeline-date">2021 — 2023</span>
+      <div class="timeline-company">Power Pharma</div>
+      <div class="timeline-role">Data Analyst</div>
+      <ul class="timeline-points">
+        <li>Analyzed operational and sales data to support business intelligence reporting</li>
+        <li>Built dashboards and visualizations to communicate key metrics to stakeholders</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CERTIFICATIONS
+════════════════════════════════════════ -->
+<section class="section" id="certifications" style="padding-top:0;">
+  <div class="section-header reveal">
+    <span class="section-tag">// Learning</span>
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <span class="cert-icon">🎓</span>
+      <div>
+        <div class="cert-title">Getting Started with GIS</div>
+        <div class="cert-org">Esri Training</div>
+        <div class="cert-year">ArcGIS Platform</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <span class="cert-icon">🗺️</span>
+      <div>
+        <div class="cert-title">Spatial Analysis & Data Science</div>
+        <div class="cert-org">Esri Training</div>
+        <div class="cert-year">ArcGIS Pro</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <span class="cert-icon">🏗️</span>
+      <div>
+        <div class="cert-title">Civil 3D Essentials</div>
+        <div class="cert-org">Autodesk Training</div>
+        <div class="cert-year">Infrastructure Design</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <span class="cert-icon">🔗</span>
+      <div>
+        <div class="cert-title">BIM Fundamentals</div>
+        <div class="cert-org">Professional Development</div>
+        <div class="cert-year">Infrastructure BIM</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <span class="cert-icon">🐍</span>
+      <div>
+        <div class="cert-title">Python for GIS Automation</div>
+        <div class="cert-org">Esri / Self-directed</div>
+        <div class="cert-year">ArcPy Development</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <span class="cert-icon">📊</span>
+      <div>
+        <div class="cert-title">Data Analysis & Visualization</div>
+        <div class="cert-org">Microsoft Power BI</div>
+        <div class="cert-year">Business Intelligence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <span class="section-tag">// Get In Touch</span>
+      <h2 class="contact-title">Let's Build<br/>Something Precise</h2>
+      <p class="contact-desc">
+        Looking for a GIS engineer who delivers clean, validated, submission-ready spatial data? I'm available for project-based work and full-time roles across the GIS and infrastructure sector.
+      </p>
+      <div class="hero-btns">
+        <a href="mailto:a7med.kammal@icloud.com" class="btn-primary">Send Email</a>
+        <a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank" class="btn-outline">LinkedIn Profile</a>
+      </div>
+    </div>
+
+    <div class="contact-links reveal reveal-delay-1">
+      <a href="mailto:a7med.kammal@icloud.com" class="contact-link">
+        <div class="contact-link-icon">✉️</div>
+        <div class="contact-link-info">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">a7med.kammal@icloud.com</span>
+        </div>
+        <span class="contact-link-arrow">→</span>
       </a>
-
-      <a href="bore-hole-replacement/index.html" class="project-card">
-        <img src="bore-hole-replacement/bore-hole-replacement-1.jpeg" alt="Borehole Documentation" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Geotechnical · GIS Database</span>
-          <h3>Borehole Investigation Documentation</h3>
-          <p>Structured GIS spatial database for geotechnical borehole investigation records, organized and validated to National Water Company data standards.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">GIS</span>
-              <span class="project-tag">Geodatabase</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
+      <a href="tel:+966544027271" class="contact-link">
+        <div class="contact-link-icon">📞</div>
+        <div class="contact-link-info">
+          <span class="contact-link-label">Phone / WhatsApp</span>
+          <span class="contact-link-value">+966 544 027 271</span>
         </div>
+        <span class="contact-link-arrow">→</span>
       </a>
-
-      <a href="palm-hills-urban-planning/index.html" class="project-card">
-        <img src="palm-hills-urban-planning/palm-hills-1.jpeg" alt="Palm Hills Urban Planning" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Urban Planning · Network Analysis</span>
-          <h3>Palm Hills Urban Planning Study</h3>
-          <p>Network-based GIS analysis evaluating healthcare accessibility and ambulance response times for a residential compound in 6th of October City.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">Network Analyst</span>
-              <span class="project-tag">Urban Planning</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
+      <a href="https://www.linkedin.com/in/ahmed-lokma/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">💼</div>
+        <div class="contact-link-info">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">linkedin.com/in/ahmed-lokma</span>
         </div>
+        <span class="contact-link-arrow">→</span>
       </a>
-
-      <a href="pipe-network-tools/index.html" class="project-card">
-        <img src="pipe-network-tools/code-1.jpeg" alt="Pipe Network Automation" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Python Development · GIS Automation</span>
-          <h3>Pipe Network Automation Tool</h3>
-          <p>A custom Python and ArcPy tool that automates GIS data classification and formatting to fit NWC schema — cutting manual preparation time significantly.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">ArcPy</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
+      <a href="https://github.com/ahmed-kamal-gis" target="_blank" class="contact-link">
+        <div class="contact-link-icon">💻</div>
+        <div class="contact-link-info">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">ahmed-kamal-gis</span>
         </div>
+        <span class="contact-link-arrow">→</span>
       </a>
-
-      <a href="spatial-analysis-saudi-arabia/index.html" class="project-card">
-        <img src="spatial-analysis-saudi-arabia/spatial-analysis-1.jpeg" alt="Spatial Analysis" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Spatial Analysis · Environmental GIS</span>
-          <h3>Spatial Analysis Studies</h3>
-          <p>Terrain analysis, flood flow modeling, and agricultural land suitability studies across multiple regions of Saudi Arabia using DEM data and Spatial Analyst.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">Spatial Analyst</span>
-              <span class="project-tag">DEM</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="tilal-elnarges-house-project/index.html" class="project-card">
-        <img src="tilal-elnarges-house-project/water-meter-1.jpeg" alt="Water Meter Documentation" class="project-img" />
-        <div class="project-body">
-          <span class="project-cat">Asset Documentation · GIS Database</span>
-          <h3>Water Meter GIS Documentation</h3>
-          <p>GIS asset inventory of water meter locations prepared and validated for official submission to the National Water Company, fully compliant with NWC GIS schema.</p>
-          <div class="project-footer">
-            <div class="project-tags">
-              <span class="project-tag">GIS</span>
-              <span class="project-tag">NWC</span>
-            </div>
-            <span class="project-arrow">↗</span>
-          </div>
-        </div>
-      </a>
-
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- SKILLS -->
-  <section class="section" id="skills" style="padding-top:0;">
-    <div class="section-header">
-      <span class="section-label">Technical</span>
-      <h2 class="section-title">Skills &amp; Tools</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">ArcGIS Pro</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">QGIS</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Civil 3D</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Python / ArcPy</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Network Analyst</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Spatial Analyst</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Geodatabase Management</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">AutoCAD</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">BIM Integration</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">GIS Data Validation</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">NWC GIS Standards</span></div>
-      <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">DEM Analysis</span></div>
-    </div>
-  </section>
+<!-- ══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 <span class="footer-accent">Ahmed Mohamed Kamal</span> · GIS Engineer</p>
+  <p>Eastern Province, Saudi Arabia · Built with HTML, CSS & JS</p>
+</footer>
 
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <div class="contact-text">
-        <h2>Let's Work Together</h2>
-        <p>Looking for a GIS specialist who can handle everything from raw field data to submission-ready infrastructure datasets? I'm available for project-based work and full-time opportunities in the GIS and geospatial field.</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:a7med.kammal@icloud.com" class="contact-link">
-          <span class="contact-link-icon">✉️</span>
-          a7med.kammal@icloud.com
-        </a>
-        <a href="tel:+966544027271" class="contact-link">
-          <span class="contact-link-icon">📞</span>
-          +966 544 027 271
-        </a>
-        <a href="https://www.linkedin.com/in/ahmed-lokma/" class="contact-link" target="_blank">
-          <span class="contact-link-icon">💼</span>
-          linkedin.com/in/ahmed-lokma
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Ahmed Mohamed Kamal · GIS Specialist</p>
-    <p>Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
-  </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
