@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palm Hills Urban Planning | Ahmed Kamal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #0b0f1a; --surface: #111827; --border: #1f2d3d; --accent: #38bdf8; --text: #e2e8f0; --muted: #64748b; --tag-bg: #0c2233; --tag-color: #38bdf8; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; background: rgba(11,15,26,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { width:16px; height:16px; }
+    .hero { padding: 7rem 2.5rem 3rem; max-width: 960px; margin: 0 auto; }
+    .project-category { display: inline-block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; color: #fff; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin-bottom: 2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .tag { background: var(--tag-bg); color: var(--tag-color); border: 1px solid rgba(56,189,248,0.2); border-radius: 4px; padding: 0.3rem 0.75rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .meta-value { font-size: 0.9rem; color: var(--text); font-weight: 400; }
+    .section { max-width: 960px; margin: 0 auto 4rem; padding: 0 2.5rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); cursor: pointer; transition: transform 0.25s, border-color 0.25s; }
+    .gallery-item:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .gallery-item img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
+    .content-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; }
+    .content-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em; }
+    .content-card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.75; }
+    .contrib-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .contrib-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+    .contrib-list li::before { content: '→'; color: var(--accent); font-size: 0.8rem; margin-top: 0.2rem; flex-shrink: 0; }
+    .outcome-box { background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.2); border-radius: 10px; padding: 1.75rem; margin-top: 2rem; }
+    .outcome-box h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; }
+    .outcome-box p { font-size: 0.9rem; color: #94a3b8; line-height: 1.75; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 200; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+    .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.7; }
+    .lightbox-close:hover { opacity: 1; }
+    .footer-nav { max-width: 960px; margin: 0 auto; padding: 3rem 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-nav a { font-size: 0.85rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--accent); }
+    .next-btn { display: flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 1.25rem; color: var(--text); text-decoration: none; font-size: 0.85rem; transition: border-color 0.2s, color 0.2s; }
+    .next-btn:hover { border-color: var(--accent); color: var(--accent); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .hero, .section { animation: fadeUp 0.5s ease both; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">AK · GIS</a>
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8l4 4"/></svg>
+      Back to Portfolio
+    </a>
+  </nav>
+
+  <div class="hero">
+    <span class="project-category">Urban Planning · Network Analysis</span>
+    <h1>Palm Hills Urban<br/>Planning Study</h1>
+    <p class="hero-sub">
+      A GIS network analysis study evaluating healthcare accessibility and ambulance response coverage for a residential compound in 6th of October City.
+    </p>
+    <div class="tags">
+      <span class="tag">ArcGIS Pro</span>
+      <span class="tag">Network Analyst</span>
+      <span class="tag">Urban Planning</span>
+      <span class="tag">Healthcare Accessibility</span>
+      <span class="tag">Emergency Response</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Location</span>
+        <span class="meta-value">6th of October City, Egypt</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">Urban Planning &amp; GIS Analysis</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Analysis Type</span>
+        <span class="meta-value">Network &amp; Accessibility Modeling</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Project Gallery</p>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox('palm-hills-1.jpeg')">
+        <img src="palm-hills-1.jpeg" alt="Palm Hills Urban Planning Image 1" loading="lazy"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('palm-hills-2.jpeg')">
+        <img src="palm-hills-2.jpeg" alt="Palm Hills Urban Planning Image 2" loading="lazy"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('palm-hills-3.jpeg')">
+        <img src="palm-hills-3.jpeg" alt="Palm Hills Urban Planning Image 3" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Project Overview</p>
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>The Challenge</h3>
+        <p>
+          Urban planners needed data-driven answers to two critical questions for the Palm Hills compound: How well are hospitals covering the development's residential areas? And how long would it realistically take an ambulance to reach any point within the compound? Answering these questions required building a proper GIS transportation network and running spatial accessibility modeling.
+        </p>
+      </div>
+      <div class="content-card">
+        <h3>My Role</h3>
+        <p>
+          Led the GIS analysis from network construction through to final map and report production. Built the transportation network model, ran service area and travel time analyses, identified coverage gaps, and delivered spatial outputs that planners could use directly in decision-making.
+        </p>
+      </div>
+    </div>
+    <div class="outcome-box">
+      <h3>Outcome</h3>
+      <p>
+        Delivered maps and analytical reports showing hospital service area coverage and ambulance response time zones across the entire compound. Results highlighted specific zones with limited healthcare reach, giving planners clear, location-specific data to guide infrastructure decisions.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Key Contributions</p>
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>Network &amp; Accessibility Analysis</h3>
+        <ul class="contrib-list">
+          <li>Built and configured a GIS transportation network model for the development area</li>
+          <li>Modeled ambulance travel times and calculated response coverage across all zones</li>
+          <li>Evaluated hospital service areas using network-based catchment analysis</li>
+          <li>Identified residential areas with insufficient healthcare access</li>
+        </ul>
+      </div>
+      <div class="content-card">
+        <h3>Reporting &amp; Delivery</h3>
+        <ul class="contrib-list">
+          <li>Produced spatial maps visualizing emergency response efficiency across the compound</li>
+          <li>Generated reports highlighting healthcare coverage distribution and gaps</li>
+          <li>Provided planners with actionable, data-driven spatial insights</li>
+          <li>Supported informed decision-making for infrastructure and facility planning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <a href="../index.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8l4 4"/></svg>
+      All Projects
+    </a>
+    <a href="../pipe-network-tools/index.html" class="next-btn">
+      Next Project: Pipe Network Automation Tool
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+  <script>
+    function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('open'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
