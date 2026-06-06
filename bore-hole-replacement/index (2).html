@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borehole Documentation | Ahmed Kamal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #111827;
+      --border: #1f2d3d;
+      --accent: #38bdf8;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --tag-bg: #0c2233;
+      --tag-color: #38bdf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; background: rgba(11,15,26,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { width:16px; height:16px; }
+    .hero { padding: 7rem 2.5rem 3rem; max-width: 960px; margin: 0 auto; }
+    .project-category { display: inline-block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; color: #fff; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin-bottom: 2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .tag { background: var(--tag-bg); color: var(--tag-color); border: 1px solid rgba(56,189,248,0.2); border-radius: 4px; padding: 0.3rem 0.75rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .meta-value { font-size: 0.9rem; color: var(--text); font-weight: 400; }
+    .section { max-width: 960px; margin: 0 auto 4rem; padding: 0 2.5rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); cursor: pointer; transition: transform 0.25s, border-color 0.25s; }
+    .gallery-item:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .gallery-item img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
+    .content-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; }
+    .content-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: 0.03em; }
+    .content-card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.75; }
+    .contrib-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .contrib-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+    .contrib-list li::before { content: '→'; color: var(--accent); font-size: 0.8rem; margin-top: 0.2rem; flex-shrink: 0; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 200; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+    .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.7; }
+    .lightbox-close:hover { opacity: 1; }
+    .footer-nav { max-width: 960px; margin: 0 auto; padding: 3rem 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-nav a { font-size: 0.85rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--accent); }
+    .next-btn { display: flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 1.25rem; color: var(--text); text-decoration: none; font-size: 0.85rem; transition: border-color 0.2s, color 0.2s; }
+    .next-btn:hover { border-color: var(--accent); color: var(--accent); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .hero, .section { animation: fadeUp 0.5s ease both; }
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">AK · GIS</a>
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8l4 4"/></svg>
+      Back to Portfolio
+    </a>
+  </nav>
+
+  <div class="hero">
+    <span class="project-category">Geotechnical · GIS Database</span>
+    <h1>Borehole Investigation<br/>Documentation</h1>
+    <p class="hero-sub">
+      Turning scattered field investigation records into a structured, searchable GIS spatial database aligned with National Water Company data standards.
+    </p>
+    <div class="tags">
+      <span class="tag">ArcGIS Pro</span>
+      <span class="tag">Geodatabase Management</span>
+      <span class="tag">NWC Standards</span>
+      <span class="tag">Quality Control</span>
+      <span class="tag">Geotechnical Data</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">National Water Company</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">Geotechnical Site Investigation</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Deliverable</span>
+        <span class="meta-value">Structured GIS Geodatabase</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Project Gallery</p>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox('bore-hole-replacement-1.jpeg')">
+        <img src="bore-hole-replacement-1.jpeg" alt="Borehole Project Image 1" loading="lazy"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('bore-hole-replacement-2.jpeg')">
+        <img src="bore-hole-replacement-2.jpeg" alt="Borehole Project Image 2" loading="lazy"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('bore-hole-replacement-3.jpeg')">
+        <img src="bore-hole-replacement-3.jpeg" alt="Borehole Project Image 3" loading="lazy"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('bore-hole-replacement-4.jpeg')">
+        <img src="bore-hole-replacement-4.jpeg" alt="Borehole Project Image 4" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Project Overview</p>
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>The Challenge</h3>
+        <p>
+          Borehole investigation data collected during geotechnical site studies was spread across separate field records with no unified structure. The National Water Company needed all records consolidated into a GIS database that could be spatially queried, quality-checked, and integrated into future engineering planning.
+        </p>
+      </div>
+      <div class="content-card">
+        <h3>My Role</h3>
+        <p>
+          Designed and built the GIS spatial database for all borehole records, structured attribute data to meet NWC requirements, and performed systematic quality control checks to ensure accuracy and completeness before submission.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Key Contributions</p>
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>Database &amp; Spatial Work</h3>
+        <ul class="contrib-list">
+          <li>Created GIS layers to map all borehole locations and associated investigation data</li>
+          <li>Organized and standardized geotechnical attribute information into a clean, queryable schema</li>
+          <li>Structured the geodatabase to comply with National Water Company data requirements</li>
+          <li>Improved long-term traceability of subsurface investigation records</li>
+        </ul>
+      </div>
+      <div class="content-card">
+        <h3>Quality Control</h3>
+        <ul class="contrib-list">
+          <li>Performed detailed QC checks across all spatial and attribute data</li>
+          <li>Identified and corrected inconsistencies in field-recorded information</li>
+          <li>Ensured data accuracy and readiness for integration into NWC systems</li>
+          <li>Made records accessible and reusable for future engineering studies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <a href="../index.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4L6 8l4 4"/></svg>
+      All Projects
+    </a>
+    <a href="../palm-hills-urban-planning/index.html" class="next-btn">
+      Next Project: Palm Hills Urban Planning
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('open'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
