@@ -78,6 +78,27 @@ function animateCanvas() {
 resizeCanvas(); initDots(); animateCanvas();
 window.addEventListener('resize', () => { resizeCanvas(); initDots(); });
 
+// ── THEME TOGGLE ──
+const themeBtn = document.getElementById('theme-toggle');
+const iconMoon = themeBtn.querySelector('.icon-moon');
+const iconSun  = themeBtn.querySelector('.icon-sun');
+
+function setTheme(light) {
+  document.body.classList.toggle('light-mode', light);
+  iconMoon.style.display = light ? 'none'  : 'block';
+  iconSun.style.display  = light ? 'block' : 'none';
+  themeBtn.title = light ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  localStorage.setItem('theme', light ? 'light' : 'dark');
+}
+
+// Load saved preference
+const saved = localStorage.getItem('theme');
+if (saved === 'light') setTheme(true);
+
+themeBtn.addEventListener('click', () => {
+  setTheme(!document.body.classList.contains('light-mode'));
+});
+
 // ── NAV SCROLL ──
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
