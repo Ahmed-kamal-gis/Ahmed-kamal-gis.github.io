@@ -480,6 +480,25 @@ nav.scrolled {
 }
 .timeline-points li::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 0.05rem; }
 
+/* ── CERT DOWNLOAD BTN (in timeline) ── */
+.cert-download-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.25);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--accent); text-decoration: none;
+  transition: var(--transition);
+  width: fit-content;
+}
+.cert-download-btn:hover {
+  background: rgba(56,189,248,0.15);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* ── CERTIFICATIONS ── */
 .certs-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
