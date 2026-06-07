@@ -49,7 +49,46 @@ body {
   font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text2); cursor: pointer;
+  transition: var(--transition); flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── LIGHT MODE ── */
+body.light-mode {
+  --bg:       #f0f4ff;
+  --bg2:      #e4eaf8;
+  --bg3:      #d8e2f5;
+  --surface:  rgba(0,0,0,0.04);
+  --surface2: rgba(0,0,0,0.07);
+  --border:   rgba(0,0,0,0.1);
+  --border2:  rgba(2,132,199,0.3);
+  --accent:   #0284c7;
+  --accent2:  #0369a1;
+  --accent3:  #0ea5e9;
+  --glow:     rgba(2,132,199,0.12);
+  --glow2:    rgba(2,132,199,0.06);
+  --text:     #1e293b;
+  --text2:    #475569;
+  --text3:    #64748b;
+  --white:    #0f172a;
+}
+body.light-mode #bg-canvas { opacity: 0.12; }
+body.light-mode nav { background: rgba(240,244,255,0.85); }
+body.light-mode nav.scrolled { background: rgba(240,244,255,0.97); }
+body.light-mode .hero-float-card { background: rgba(255,255,255,0.92); border-color: rgba(2,132,199,0.2); }
+body.light-mode .contact-section { background: var(--bg2); }
+body.light-mode .stats-section { background: rgba(0,0,0,0.02); }
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
