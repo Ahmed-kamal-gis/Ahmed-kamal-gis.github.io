@@ -178,6 +178,30 @@ nav.scrolled {
   margin-bottom: 3.5rem;
   animation: fadeUp 0.7s ease 0.4s both;
 }
+.btn-glow {
+  position: relative;
+  box-shadow: 0 0 20px rgba(56,189,248,0.4), 0 0 60px rgba(56,189,248,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  gap: 0.75rem;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 35px rgba(56,189,248,0.6), 0 0 80px rgba(56,189,248,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-arrow-box {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.btn-glow:hover .btn-arrow-box {
+  background: rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(2px);
+}
+
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--accent); color: var(--bg);
